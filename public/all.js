@@ -25,7 +25,6 @@ if (typeof Object.create === 'function') {
 
 },{}],2:[function(require,module,exports){
 // shim for using process in browser
-
 var process = module.exports = {};
 
 // cached from whatever global is present so that test runners that stub it
@@ -37,21 +36,35 @@ var cachedSetTimeout;
 var cachedClearTimeout;
 
 (function () {
-  try {
-    cachedSetTimeout = setTimeout;
-  } catch (e) {
-    cachedSetTimeout = function () {
-      throw new Error('setTimeout is not defined');
+    try {
+        cachedSetTimeout = setTimeout;
+    } catch (e) {
+        cachedSetTimeout = function () {
+            throw new Error('setTimeout is not defined');
+        }
     }
-  }
-  try {
-    cachedClearTimeout = clearTimeout;
-  } catch (e) {
-    cachedClearTimeout = function () {
-      throw new Error('clearTimeout is not defined');
+    try {
+        cachedClearTimeout = clearTimeout;
+    } catch (e) {
+        cachedClearTimeout = function () {
+            throw new Error('clearTimeout is not defined');
+        }
     }
-  }
 } ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        return setTimeout(fun, 0);
+    } else {
+        return cachedSetTimeout.call(null, fun, 0);
+    }
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        clearTimeout(marker);
+    } else {
+        cachedClearTimeout.call(null, marker);
+    }
+}
 var queue = [];
 var draining = false;
 var currentQueue;
@@ -76,7 +89,7 @@ function drainQueue() {
     if (draining) {
         return;
     }
-    var timeout = cachedSetTimeout(cleanUpNextTick);
+    var timeout = runTimeout(cleanUpNextTick);
     draining = true;
 
     var len = queue.length;
@@ -93,7 +106,7 @@ function drainQueue() {
     }
     currentQueue = null;
     draining = false;
-    cachedClearTimeout(timeout);
+    runClearTimeout(timeout);
 }
 
 process.nextTick = function (fun) {
@@ -105,7 +118,7 @@ process.nextTick = function (fun) {
     }
     queue.push(new Item(fun, args));
     if (queue.length === 1 && !draining) {
-        cachedSetTimeout(drainQueue, 0);
+        runTimeout(drainQueue);
     }
 };
 
@@ -25671,7 +25684,19 @@ var App = (function (_React$Component) {
 
         _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
 
-        this.state = { user: USER };
+        this.state = {
+            user: USER,
+            sidebarShow: false
+        };
+
+        this.closeSidebar = function () {
+            if (_this.state.sidebarShow) {
+                _this.setState({ sidebarShow: false });
+            } else {
+                _this.setState({ sidebarShow: true });
+            }
+            console.log('Close Sidebar: ' + _this.state.sidebarShow);
+        };
 
         this.setUser = function (user) {
             return _this.setState({ user: user });
@@ -25691,7 +25716,7 @@ var App = (function (_React$Component) {
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'sidebar' },
+                    { id: 'sidebar', className: this.state.sidebarShow ? 'show' : 'hide' },
                     _react2['default'].createElement(
                         'h1',
                         null,
@@ -25703,11 +25728,13 @@ var App = (function (_React$Component) {
                         ),
                         ' '
                     ),
+                    _react2['default'].createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true', onClick: this.closeSidebar }),
                     _react2['default'].createElement(_PageList2['default'], { user: this.state.user })
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'mainContent' },
+                    { id: 'mainContent', className: this.state.sidebarShow ? 'hide' : 'show' },
+                    _react2['default'].createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true', onClick: this.closeSidebar }),
                     _react2['default'].createElement(_reactRouter.RouteHandler, { user: this.state.user })
                 )
             );
@@ -25773,7 +25800,7 @@ var Login = (function (_React$Component) {
                 if (data.signedIn) {
                     _this.props.setUser(data.user);
                 } else {
-                    _this.setState({ err: data.message });
+                    alert(data.message);
                 }
             });
         };
@@ -25818,11 +25845,6 @@ var Login = (function (_React$Component) {
             return _react2['default'].createElement(
                 'div',
                 { className: 'row' },
-                _react2['default'].createElement(
-                    'span',
-                    { className: 'error' },
-                    this.state.err
-                ),
                 _react2['default'].createElement('input', { placeholder: 'Username', ref: 'username', type: 'text' }),
                 _react2['default'].createElement('input', { placeholder: 'Password', ref: 'password', type: 'password' }),
                 _react2['default'].createElement(
@@ -25898,7 +25920,7 @@ var Page = (function (_React$Component) {
 
         this.deletePage = function () {
             API.pages.child(_this.props.params.id).remove();
-            _this.context.router.transitionTo('/');
+            _this.context.router.transitionTo('/page/HOME');
         };
 
         this.addSection = function (evt) {

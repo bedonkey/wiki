@@ -38,7 +38,7 @@ export default class Page extends React.Component {
 
     deletePage = () => {
         API.pages.child(this.props.params.id).remove();
-        this.context.router.transitionTo('/');
+        this.context.router.transitionTo('/page/HOME');
     }
 
     render () {

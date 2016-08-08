@@ -22,7 +22,7 @@ export default class Login extends React.Component {
                 if (data.signedIn) {
                     this.props.setUser(data.user);
                 } else {
-                    this.setState({ err: data.message});
+                    alert(data.message);
                 }
             }
         );
@@ -37,7 +37,6 @@ export default class Login extends React.Component {
             </div>;
 
         return <div className='row'>
-            <span className='error'>{this.state.err}</span>
             <input placeholder='Username' ref='username' type='text' />
             <input placeholder='Password' ref='password' type='password' />
             <button onClick={this.signin}> Sign In </button>
