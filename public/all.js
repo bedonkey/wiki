@@ -26087,9 +26087,7 @@ var PageList = (function (_React$Component) {
 
         this.createPage = function (evt) {
             if (evt.charCode !== 13) return;
-            var title = _this.state.newPageTitle.replace(/\b./g, function (m) {
-                return m.toUpperCase();
-            });
+            var title = _this.capitalizeFirstLetter(_this.state.newPageTitle);
             for (var id in _this.state.pages) {
                 if (_this.state.pages[id].title == title) {
                     return;
@@ -26099,6 +26097,16 @@ var PageList = (function (_React$Component) {
             _this.changePage();
             _this.context.router.transitionTo('page', { id: id.key() });
             _this.setState({ newPageTitle: '' });
+        };
+
+        this.capitalizeFirstLetter = function (str) {
+            str = str.toLowerCase().split(' ');
+            for (var i = 0; i < str.length; i++) {
+                str[i] = str[i].split('');
+                str[i][0] = str[i][0].toUpperCase();
+                str[i] = str[i].join('');
+            }
+            return str.join(' ');
         };
 
         this.context = context;
