@@ -41,6 +41,7 @@ a {
 	background: white;
 	z-index: 9;
 	margin-top: -15px;
+	font-size: 13px;
 	border-image: linear-gradient(to top, #333, rgba(0, 0, 0, 0.1)) 1 50%;
 }
 #sidebar .logo{
@@ -48,6 +49,7 @@ a {
 }
 #sidebar input{
 	height: 25px;
+	padding: 0 10px;
 }
 #sidebar .logo img{
 	padding-top: -20px;
