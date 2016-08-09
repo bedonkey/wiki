@@ -25718,13 +25718,13 @@ var App = (function (_React$Component) {
                     'div',
                     { id: 'sidebar', className: this.state.sidebarShow ? 'show' : 'hide' },
                     _react2['default'].createElement(
-                        'h1',
-                        null,
+                        'div',
+                        { className: 'logo' },
                         ' ',
                         _react2['default'].createElement(
                             'a',
                             { href: '/' },
-                            'VNDS Wiki'
+                            _react2['default'].createElement('img', { src: '/images/wiki.png', height: '100px' })
                         ),
                         ' '
                     ),
@@ -26065,6 +26065,10 @@ var PageList = (function (_React$Component) {
             newPageTitle: ''
         };
 
+        this.changePage = function () {
+            console.log('Change page');
+        };
+
         this.update = function (evt) {
             var searchText = evt.target.value.toLowerCase();
             var pagesResult = {};
@@ -26086,7 +26090,13 @@ var PageList = (function (_React$Component) {
             var title = _this.state.newPageTitle.replace(/\b./g, function (m) {
                 return m.toUpperCase();
             });
+            for (var id in _this.state.pages) {
+                if (_this.state.pages[id].title == title) {
+                    return;
+                }
+            }
             var id = API.pages.push({ title: title, userCreate: _this.props.user.username });
+            _this.changePage();
             _this.context.router.transitionTo('page', { id: id.key() });
             _this.setState({ newPageTitle: '' });
         };
@@ -26115,10 +26125,10 @@ var PageList = (function (_React$Component) {
             var items = this.state.loaded ? Object.keys(this.state.pagesResult).map(function (id) {
                 return _react2['default'].createElement(
                     'li',
-                    { key: id, className: _this3.state.pagesResult[id].sections ? '' : 'no-content' },
+                    { key: id, className: id == 'HOME' ? 'hide' : '' },
                     _react2['default'].createElement(
                         _reactRouter.Link,
-                        { to: 'page', params: { id: id } },
+                        { to: 'page', params: { id: id }, onClick: _this3.changePage, className: _this3.state.pagesResult[id].sections ? '' : 'no-content' },
                         _this3.state.pagesResult[id].title
                     )
                 );
@@ -26293,6 +26303,16 @@ var Section = (function (_React$Component) {
             });
         };
 
+        this.capitalizeFirstLetter = function (str) {
+            str = str.toLowerCase().split(' ');
+            for (var i = 0; i < str.length; i++) {
+                str[i] = str[i].split('');
+                str[i][0] = str[i][0].toUpperCase();
+                str[i] = str[i].join('');
+            }
+            return str.join(' ');
+        };
+
         this.context = context;
         this.state = this.getState(props);
     }
@@ -26392,9 +26412,9 @@ var Section = (function (_React$Component) {
                 var keys = Object.keys(pages);
                 var pagesTemp = {};
                 callback(html.replace(anchor, function (match, anchorText) {
-                    var firstUpperCaseAnchorText = anchorText.trim().replace(/\b./g, function (m) {
-                        return m.toUpperCase();
-                    });
+                    console.log(anchorText);
+                    var firstUpperCaseAnchorText = _this3.capitalizeFirstLetter(anchorText);
+                    console.log(firstUpperCaseAnchorText);
                     var _iteratorNormalCompletion = true;
                     var _didIteratorError = false;
                     var _iteratorError = undefined;

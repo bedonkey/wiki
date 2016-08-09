@@ -14,19 +14,18 @@ a {
 #header {
 	text-align: right;
 	padding: 0 10px;
-	line-height: 30px;
+	line-height: 35px;
 	font-size: 13px;
-	line-height: 30px;
 }
 #header button{
-	height: 25px;
-	line-height: 20px;
+	height: 20px;
+	line-height: 15px;
 	margin: 0;
 	padding: 0;
-	width: 80px;
+	width: 70px;
 }
 #header input{
-	height: 25px;
+	height: 20px;
 	margin: 0;
 	padding: 2px 5px;
 	margin-right: 5px;
@@ -41,10 +40,17 @@ a {
 	overflow-y: auto;
 	background: white;
 	z-index: 9;
+	margin-top: -15px;
+	border-image: linear-gradient(to top, #333, rgba(0, 0, 0, 0.1)) 1 50%;
 }
-#sidebar h1{
-	font-size: 2em;
-	font-weight: bold;
+#sidebar .logo{
+	text-align: center;
+}
+#sidebar input{
+	height: 25px;
+}
+#sidebar .logo img{
+	padding-top: -20px;
 }
 #sidebar .fa-bars {
 	position: absolute;
@@ -78,7 +84,7 @@ a {
 }
 #mainContent .addSession {
 	text-align: right;
-	padding-top: 20px;
+	padding: 20px 0;
 }
 #mainContent .addSession button{
 	padding: 0 5px;
@@ -96,9 +102,11 @@ a {
 .section {
     border-radius: 4px;
     border: 1px solid #fff;
+    padding-bottom: 5px;
 }
 .section p {
     padding: 2px 5px;
+    margin-bottom: 2px;
 }
 .section .tools {
 	height: 25px;

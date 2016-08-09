@@ -25,7 +25,7 @@ export default class App extends React.Component {
                 <Login user={this.state.user} setUser={this.setUser} />
             </div>
             <div id="sidebar" className={this.state.sidebarShow ? 'show' : 'hide'}>
-                <h1> <a href="/">VNDS Wiki</a> </h1>
+                <div className="logo"> <a href="/"><img src="/images/wiki.png" height="100px"/></a> </div>
                 <i className="fa fa-bars" aria-hidden="true" onClick={this.closeSidebar}></i>
                 <PageList user={this.state.user} />
             </div>

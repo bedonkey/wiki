@@ -23,9 +23,13 @@ export default class PageList extends React.Component {
             loaded: true
         }));
     }
+    changePage = () => {
+        console.log('Change page');
+    }
+
     render () {
-        let items = this.state.loaded ? Object.keys(this.state.pagesResult).map(id => <li key={id} className={this.state.pagesResult[id].sections ? '' : 'no-content'}> 
-            <Link to='page' params={{ id: id }}>{this.state.pagesResult[id].title}</Link>
+        let items = this.state.loaded ? Object.keys(this.state.pagesResult).map(id => <li key={id} className={id=='HOME' ? 'hide' : ''}> 
+            <Link to='page' params={{ id: id }} onClick={this.changePage} className={this.state.pagesResult[id].sections ? '' : 'no-content'} >{this.state.pagesResult[id].title}</Link>
         </li>) :
             [<li key='loading'> <em> Loading... </em> </li>];
 
@@ -61,7 +65,13 @@ export default class PageList extends React.Component {
     createPage = evt => {
         if (evt.charCode !== 13) return;
         var title = this.state.newPageTitle.replace(/\b./g, function(m){ return m.toUpperCase(); });
+        for (var id in this.state.pages) {
+            if (this.state.pages[id].title == title) {
+                return;
+            }
+        }
         var id = API.pages.push({ title: title, userCreate: this.props.user.username});
+        this.changePage();
         this.context.router.transitionTo('page', { id: id.key() });
         this.setState({ newPageTitle: '' });
     }
