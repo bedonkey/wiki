@@ -25629,6 +25629,10 @@ var _componentsPage = require('./components/Page');
 
 var _componentsPage2 = _interopRequireDefault(_componentsPage);
 
+var _componentsHelp = require('./components/Help');
+
+var _componentsHelp2 = _interopRequireDefault(_componentsHelp);
+
 var Route = _reactRouter2['default'].Route;
 var Redirect = _reactRouter2['default'].Redirect.Redirect;
 
@@ -25636,14 +25640,15 @@ var routes = _react2['default'].createElement(
     Route,
     { handler: _componentsApp2['default'] },
     _react2['default'].createElement(Route, { name: 'page', path: '/page/:id', handler: _componentsPage2['default'] }),
-    _react2['default'].createElement(Route, { name: 'home', path: '/', handler: _componentsPage2['default'] })
+    _react2['default'].createElement(Route, { name: 'home', path: '/', handler: _componentsPage2['default'] }),
+    _react2['default'].createElement(Route, { name: 'help', path: '/help', handler: _componentsHelp2['default'] })
 );
 
 _reactRouter2['default'].run(routes, _reactRouter2['default'].HistoryLocation, function (Root) {
     return _react2['default'].render(_react2['default'].createElement(Root, null), document.getElementById('app'));
 });
 
-},{"./components/App":207,"./components/Page":209,"react":204,"react-router":32}],207:[function(require,module,exports){
+},{"./components/App":207,"./components/Help":208,"./components/Page":210,"react":204,"react-router":32}],207:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -25747,7 +25752,132 @@ var App = (function (_React$Component) {
 exports['default'] = App;
 module.exports = exports['default'];
 
-},{"./Login":208,"./PageList":210,"react":204,"react-router":32}],208:[function(require,module,exports){
+},{"./Login":209,"./PageList":211,"react":204,"react-router":32}],208:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var Help = (function (_React$Component) {
+    _inherits(Help, _React$Component);
+
+    function Help() {
+        _classCallCheck(this, Help);
+
+        _get(Object.getPrototypeOf(Help.prototype), "constructor", this).apply(this, arguments);
+    }
+
+    _createClass(Help, [{
+        key: "render",
+        value: function render() {
+            return _react2["default"].createElement(
+                "div",
+                null,
+                _react2["default"].createElement(
+                    "h1",
+                    null,
+                    " Hướng dẫn sử dụng "
+                ),
+                _react2["default"].createElement(
+                    "h5",
+                    null,
+                    "Đăng nhập"
+                ),
+                _react2["default"].createElement("img", { src: "/images/login.png", width: "400px", height: "50px" }),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    "Đăng nhập username password: ",
+                    _react2["default"].createElement(
+                        "b",
+                        null,
+                        "admin/123456"
+                    ),
+                    ". Đăng nhập user admin, ",
+                    _react2["default"].createElement(
+                        "span",
+                        { style: { color: 'red' } },
+                        "mọi người lưu ý không được xoá bài viết."
+                    )
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    "Đăng nhập qua user domain của cty đang được tích hợp"
+                ),
+                _react2["default"].createElement(
+                    "h5",
+                    null,
+                    "Tìm kiếm hoặc thêm bài viết"
+                ),
+                _react2["default"].createElement("img", { src: "/images/search.png", width: "400px" }),
+                _react2["default"].createElement(
+                    "h5",
+                    null,
+                    "Sửa bài viết bài viết"
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    "Phải đăng nhập mới sửa được bài viết."
+                ),
+                _react2["default"].createElement("img", { src: "/images/edit.png", width: "800px" }),
+                "B",
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    "Chọn text rồi click vào các biểu tượng dưới đây để:"
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    _react2["default"].createElement("i", { className: "fa fa-header", "aria-hidden": "true" }),
+                    " - Tạo header"
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    _react2["default"].createElement("i", { className: "fa fa-bold", "aria-hidden": "true" }),
+                    " - Bôi đậm chữ"
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    _react2["default"].createElement("i", { className: "fa fa-italic", "aria-hidden": "true" }),
+                    " - In nghiêng chữ"
+                ),
+                _react2["default"].createElement(
+                    "p",
+                    null,
+                    _react2["default"].createElement("i", { className: "fa fa-link", "aria-hidden": "true" }),
+                    " - Tạo link đến các bài viết khác"
+                )
+            );
+        }
+    }]);
+
+    return Help;
+})(_react2["default"].Component);
+
+exports["default"] = Help;
+module.exports = exports["default"];
+
+},{"react":204}],209:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -25839,6 +25969,11 @@ var Login = (function (_React$Component) {
                         ' Sign Out '
                     ),
                     ' '
+                ),
+                _react2['default'].createElement(
+                    'a',
+                    { href: '/help' },
+                    _react2['default'].createElement('i', { className: 'help fa fa-question-circle', 'aria-hidden': 'true' })
                 )
             );
 
@@ -25851,6 +25986,11 @@ var Login = (function (_React$Component) {
                     'button',
                     { onClick: this.signin },
                     ' Sign In '
+                ),
+                _react2['default'].createElement(
+                    'a',
+                    { href: '/help' },
+                    _react2['default'].createElement('i', { className: 'help fa fa-question-circle', 'aria-hidden': 'true' })
                 )
             );
         }
@@ -25862,7 +26002,7 @@ var Login = (function (_React$Component) {
 exports['default'] = Login;
 module.exports = exports['default'];
 
-},{"../api":205,"react":204}],209:[function(require,module,exports){
+},{"../api":205,"react":204}],210:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26020,7 +26160,7 @@ Page.contextTypes = {
 };
 module.exports = exports['default'];
 
-},{"../api":205,"./Section":211,"react":204,"react-router":32}],210:[function(require,module,exports){
+},{"../api":205,"./Section":212,"react":204,"react-router":32}],211:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26183,7 +26323,7 @@ PageList.contextTypes = {
 };
 module.exports = exports['default'];
 
-},{"../api":205,"react":204,"react-router":32}],211:[function(require,module,exports){
+},{"../api":205,"react":204,"react-router":32}],212:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

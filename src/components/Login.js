@@ -34,12 +34,14 @@ export default class Login extends React.Component {
             return <div className='row'>
                 <span> Hi {this.props.user.username}! </span>
                 <span> <a href="" onClick={this.signout}> Sign Out </a> </span>
+                <a href="/help"><i className="help fa fa-question-circle" aria-hidden="true"></i></a>
             </div>;
 
         return <div className='row'>
             <input placeholder='Username' ref='username' type='text' />
             <input placeholder='Password' ref='password' type='password' />
             <button onClick={this.signin}> Sign In </button>
+            <a href="/help"><i className="help fa fa-question-circle" aria-hidden="true"></i></a>
         </div>;
     }
 }

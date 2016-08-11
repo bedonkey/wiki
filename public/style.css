@@ -17,6 +17,12 @@ a {
 	line-height: 35px;
 	font-size: 13px;
 }
+#header .help {
+	width: 25px;
+	text-align: right;
+	color: #F3B001;
+	font-size: 20px;
+}
 #header button{
 	height: 20px;
 	line-height: 15px;
@@ -76,6 +82,9 @@ a {
 	line-height: 1.5em;
 	padding-left: 30px;
 }
+#mainContent p {
+	margin-bottom: 10px;
+}
 #mainContent .delete{
 	color: #ba0000;
     cursor: pointer;
@@ -110,6 +119,12 @@ a {
 .section p {
     padding: 2px 5px;
     margin-bottom: 2px;
+}
+.section ul {
+    padding-left: 20px;
+}
+.section h5 {
+    margin: 8px 0;
 }
 .section .tools {
 	height: 25px;
