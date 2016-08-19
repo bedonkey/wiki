@@ -26205,7 +26205,7 @@ var PageList = (function (_React$Component) {
         };
 
         this.changePage = function () {
-            _this.props.closeSidebar();
+            //this.props.closeSidebar();
         };
 
         this.update = function (evt) {

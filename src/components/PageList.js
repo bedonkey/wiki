@@ -24,7 +24,7 @@ export default class PageList extends React.Component {
         }));
     }
     changePage = () => {
-        this.props.closeSidebar();
+        //this.props.closeSidebar();
     }
 
     render () {
