@@ -25700,7 +25700,6 @@ var App = (function (_React$Component) {
             } else {
                 _this.setState({ sidebarShow: true });
             }
-            console.log('Close Sidebar: ' + _this.state.sidebarShow);
         };
 
         this.setUser = function (user) {
@@ -25734,7 +25733,7 @@ var App = (function (_React$Component) {
                         ' '
                     ),
                     _react2['default'].createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true', onClick: this.closeSidebar }),
-                    _react2['default'].createElement(_PageList2['default'], { user: this.state.user })
+                    _react2['default'].createElement(_PageList2['default'], { user: this.state.user, closeSidebar: this.closeSidebar })
                 ),
                 _react2['default'].createElement(
                     'div',
@@ -26206,7 +26205,7 @@ var PageList = (function (_React$Component) {
         };
 
         this.changePage = function () {
-            console.log('Change page');
+            _this.props.closeSidebar();
         };
 
         this.update = function (evt) {
@@ -26561,9 +26560,7 @@ var Section = (function (_React$Component) {
                 var keys = Object.keys(pages);
                 var pagesTemp = {};
                 callback(html.replace(anchor, function (match, anchorText) {
-                    console.log(anchorText);
                     var firstUpperCaseAnchorText = _this3.capitalizeFirstLetter(anchorText);
-                    console.log(firstUpperCaseAnchorText);
                     var _iteratorNormalCompletion = true;
                     var _didIteratorError = false;
                     var _iteratorError = undefined;

@@ -16,7 +16,6 @@ export default class App extends React.Component {
         } else {
             this.setState({ sidebarShow: true })
         }
-        console.log('Close Sidebar: ' + this.state.sidebarShow)
     }
 
     render () {
@@ -27,11 +26,11 @@ export default class App extends React.Component {
             <div id="sidebar" className={this.state.sidebarShow ? 'show' : 'hide'}>
                 <div className="logo"> <a href="/"><img src="/images/wiki.png" height="100px"/></a> </div>
                 <i className="fa fa-bars" aria-hidden="true" onClick={this.closeSidebar}></i>
-                <PageList user={this.state.user} />
+                <PageList user={this.state.user}  closeSidebar={this.closeSidebar}/>
             </div>
             <div id="mainContent" className={this.state.sidebarShow ? 'hide' : 'show'}>
                 <i className="fa fa-bars" aria-hidden="true" onClick={this.closeSidebar}></i>
-                <RouteHandler user={this.state.user} />
+                <RouteHandler user={this.state.user}/>
             </div>
         </div>;
     }

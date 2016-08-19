@@ -178,9 +178,7 @@ export default class Section extends React.Component {
             let keys = Object.keys(pages);
             var pagesTemp = {};
             callback(html.replace(anchor, (match, anchorText) => {
-                console.log(anchorText)
                 var firstUpperCaseAnchorText = this.capitalizeFirstLetter(anchorText);
-                console.log(firstUpperCaseAnchorText)
                 for (let key of keys) {
                     if (pages[key].title === firstUpperCaseAnchorText) {
                         if (pages[key].sections) {

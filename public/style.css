@@ -5,6 +5,10 @@ body {
 a {
 	text-decoration: none;
 }
+pre > code {
+	padding: 10px 0;
+	font-size: 100%;
+}
 #mainContent {
 	margin-left: 0px;
 	padding: 0 10px;
@@ -28,7 +32,8 @@ a {
 	line-height: 15px;
 	margin: 0;
 	padding: 0;
-	width: 70px;
+	width: 50px;
+	text-transform: none;
 }
 #header input{
 	height: 20px;
@@ -38,17 +43,17 @@ a {
 	width: 100px;
 }
 #sidebar {
-	padding: 0 10px;
+	padding: 10px;
 	border-right: 1px solid #a7d7f9;
 	height: 100vh;
 	width: 95%;
 	position: fixed;
 	overflow-y: auto;
-	background: white;
+	background: #F6F6F6;
 	z-index: 9;
-	margin-top: -15px;
+	margin-top: -35px;
 	font-size: 13px;
-	border-image: linear-gradient(to top, #333, rgba(0, 0, 0, 0.1)) 1 50%;
+	border-image: linear-gradient(to top, #777, rgba(0, 0, 0, 0.05)) 1 70%;
 }
 #sidebar .logo{
 	text-align: center;
@@ -62,7 +67,7 @@ a {
 }
 #sidebar .fa-bars {
 	position: absolute;
-	top: 10px;
+	top: 5px;
 	right: 10px;
 	font-size: 25px;
 	cursor: pointer;
@@ -77,10 +82,9 @@ a {
 }
 #mainContent h1{
 	font-size: 1.8em;
-	border-bottom: 1px solid #aaa;
+	border-bottom: 1px solid #ddd;
 	margin-bottom: 0.5em;
 	line-height: 1.5em;
-	padding-left: 30px;
 }
 #mainContent p {
 	margin-bottom: 10px;
@@ -108,7 +112,9 @@ a {
 	font-size: 25px;
 	cursor: pointer;
 	position: absolute;
-	top: 10px;
+	top: -30px;
+	width: 30px;
+	background: white;
 }
 .section {
     border-radius: 4px;
