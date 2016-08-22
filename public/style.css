@@ -31,7 +31,7 @@ pre > code {
 	height: 20px;
 	line-height: 15px;
 	margin: 0;
-	padding: 0;
+	padding: 1px;
 	width: 50px;
 	text-transform: none;
 }

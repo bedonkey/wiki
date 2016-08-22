@@ -6,8 +6,7 @@ export default class Help extends React.Component {
             <h1> Hướng dẫn sử dụng </h1>
             <h5>Đăng nhập</h5>
             <img src="/images/login.png" width="400px" height="50px"/>
-            <p>Đăng nhập username password: <b>admin/123456</b>. Đăng nhập user admin, <span style={{color: 'red'}}>mọi người lưu ý không được xoá bài viết.</span></p>
-            <p>Đăng nhập qua user domain của cty đang được tích hợp</p>
+            <p>Đăng nhập qua <a href="/page/-KOpOKWivZ1k_3klLnlF">user domain của cty</a></p>
             <h5>Tìm kiếm hoặc thêm bài viết</h5>
             <img src="/images/search.png" width="400px"/>
             <h5>Sửa bài viết bài viết</h5>

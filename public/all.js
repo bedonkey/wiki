@@ -25801,23 +25801,12 @@ var Help = (function (_React$Component) {
                 _react2["default"].createElement(
                     "p",
                     null,
-                    "Đăng nhập username password: ",
+                    "Đăng nhập qua ",
                     _react2["default"].createElement(
-                        "b",
-                        null,
-                        "admin/123456"
-                    ),
-                    ". Đăng nhập user admin, ",
-                    _react2["default"].createElement(
-                        "span",
-                        { style: { color: 'red' } },
-                        "mọi người lưu ý không được xoá bài viết."
+                        "a",
+                        { href: "/page/-KOpOKWivZ1k_3klLnlF" },
+                        "user domain của cty"
                     )
-                ),
-                _react2["default"].createElement(
-                    "p",
-                    null,
-                    "Đăng nhập qua user domain của cty đang được tích hợp"
                 ),
                 _react2["default"].createElement(
                     "h5",
